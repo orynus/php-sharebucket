@@ -35,7 +35,7 @@
     <nav class="navbar navbar-light bg-dark">
         <a class="navbar-brand" href="#">
          <img src="img/sb_logo.png" width="32" height="32" alt="">
-         <span style="color:#E9ECEF">Sharebucket</span>
+         <span>Sharebucket</span>
         </a>
         <div align="right">
         <span class="right">Einloggen</span>
@@ -44,7 +44,7 @@
     </nav>
 
 <!-- Title, subtitle -->
-<div class="jumbotron jumbotron-fluid" style="padding: 0.5em 0.6em">
+<div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Sharebucket</h1>
         <p class="lead">Teile deine Projektideen mit uns!</p>

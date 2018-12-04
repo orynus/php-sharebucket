@@ -1,10 +1,13 @@
 .navbar span {
 	color: #E9ECEF;
-	
 }
 
 .navbar span.right {
 	padding-right: 10px;
 	margin-top: 3px;
     display:inline-block;
+}
+
+.jumbotron {
+	padding: 0.5em 0.6em;
 }
