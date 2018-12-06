@@ -28,13 +28,14 @@
     <!-- Bootstrap import -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- CSS import -->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 
 </head>
 <body>
+
 
     <!-- Navbar with Login -->
     <nav class="navbar navbar-light bg-dark fixed-top">
@@ -55,7 +56,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Bitte loggen Sie sich ein!</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Bitte logge Dich ein!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -89,14 +90,94 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary">Registrieren</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"">Abbrechen</button>
+                    <button type="button" class="btn btn-secondary" data-dismis="modal" data-toggle="modal" data-target="#ModalRegistration">Registrieren</button>
                     <button type="button" class="btn btn-primary">Login</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Title, subtitle -->
+
+    <!-- Registration Modal -->
+    <div class="modal fade" id="ModalRegistration" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Registriere Dich..</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Registration Form -->
+                    <form>
+                        <div class="form-row align-items-center">
+                            <!-- Username -->
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fa fa-user"></span>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                            </div>
+
+                            <!-- Vorname -->
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fa fa-address-book"></span>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="inputFirstname" placeholder="Vorname">
+                            </div>
+
+                            <!-- Nachname -->
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fa fa-address-book"></span>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="inputLastname" placeholder="Nachname">
+                            </div>
+
+                            <!-- E-Mail -->
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fa fa-envelope"></span>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="inputEmail" placeholder="E-Mail Adresse">
+                            </div>
+
+                            <!-- Passwort -->
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fa fa-lock"></span>
+                                    </div>
+                                </div>
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Passwort">
+                            </div>
+                            <span id="LoginText">Noch kein Mitglied? Klicke jetzt auf den "Registrieren"-Button</span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"">Abbrechen</button>
+                    <button type="button" class="btn btn-primary">Registrieren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Jumbotron (Title, subtitle, project button) -->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Sharebucket</h1>
@@ -107,9 +188,9 @@
             <hr>
 
             <!-- Projekt hinzufügen -->
-            <div class="addProject" data-toggle="modal" data-target="#ModalNewProject">
+            <div class="addProject" >
                 <p><span>Füge jetzt deine Projektidee hinzu..</span></p>
-                <button type="button" class="btn btn-primary">Neues Projekt</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalNewProject">Neues Projekt</button>
             </div>
 
                 <!-- Modal Project -->
@@ -124,17 +205,17 @@
                         </div>
                         <div class="modal-body">
 
-                            <!-- Login Form -->
+                            <!-- Projekt Form -->
                             <form>
                                 <div class="form-row align-items-center">
                                     <!-- Projekt-Name -->
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
-                                                <span class="fa fa-pencil"></span>
+                                                <span class="fa fa-briefcase"></span>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" id="ProjektName" placeholder="Projekt Name" required="true">
+                                        <input type="text" class="form-control" id="ProjektName" placeholder="Projekt Name" maxlength="50" required="true">
                                     </div>
 
                                     <!-- Kurzbeschreibung -->
@@ -156,23 +237,16 @@
                                         </div>
                                         <textarea class="form-control" id="ProjektBeschreibung" placeholder="Beschreibung" rows="5" maxlenght="10000" required="true"></textarea>
                                     </div>
-
-
-
-
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger">Abbrechen</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"">Abbrechen</button>
                             <button type="button" class="btn btn-primary">Projekt hinzufügen</button>
                         </div>
                     </div>
                 </div>
                 </div>
-
-
-
         </div>
     </div>
 
