@@ -27,3 +27,17 @@ body {
 	font-size: 14px;
 	font-style: italic;
 }
+
+#Registration {
+	margin-top: 20px;
+}
+
+#ProjektName {
+	font-weight: bold;
+}
+
+#PasswortFormatHinweis {
+	color: #4D5359;
+	font-size: 14px;
+	font-style: italic;
+}

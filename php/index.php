@@ -5,6 +5,10 @@
  */
 
 
+
+
+
+
 ?>
 
 
@@ -17,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Title Tag -->
-    <title>Sharebucket</title>
+    <title>Sharebucket | Index</title>
 
     <!-- Icon -->
     <link rel="icon" href="img/sb_icon.gif" type="image/gif" sizes="32x32">
@@ -36,6 +40,14 @@
 </head>
 <body>
 
+    <!-- Ausgabe von Meldungen -->
+    <?php
+    if(!empty($error)){
+        echo "<div class=\"alert alert-danger\" role=\"alert\">" . $error . "</div>";
+    } else if (!empty($message)){
+        echo "<div class=\"alert alert-success\" role=\"alert\">" . $message . "</div>";
+    }
+    ?>
 
     <!-- Navbar with Login -->
     <nav class="navbar navbar-light bg-dark fixed-top">
@@ -52,6 +64,7 @@
     </nav>
 
     <!-- User Modal -->
+    <form id="LoginForm">
     <div class="modal fade" id="ModalUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -64,7 +77,6 @@
                 <div class="modal-body">
 
                     <!-- Login Form -->
-                    <form>
                         <div class="form-row align-items-center">
                             <!-- Username -->
                                 <div class="input-group mb-2">
@@ -73,7 +85,7 @@
                                             <span class="fa fa-user"></span>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" id="inputusername" placeholder="Username">
+                                    <input type="text" class="form-control" id="inputusername" placeholder="Username" required="true">
                                 </div>
 
                             <!-- Passwort -->
@@ -83,98 +95,21 @@
                                             <span class="fa fa-lock"></span>
                                         </div>
                                     </div>
-                                    <input type="password" class="form-control" id="inputpassword" placeholder="Passwort">
+                                    <input type="password" class="form-control" id="inputpassword" placeholder="Passwort" required="true">
                                 </div>
                             <span id="LoginText">Noch kein Mitglied? Klicke jetzt auf den "Registrieren"-Button</span>
                         </div>
-                    </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"">Abbrechen</button>
-                    <button type="button" class="btn btn-secondary" data-dismis="modal" data-toggle="modal" data-target="#ModalRegistration">Registrieren</button>
-                    <button type="button" class="btn btn-primary">Login</button>
+                    <a href="registration.php"><button type="button" class="btn btn-secondary">Registrieren</button></a>
+                    <button type="submit" class="btn btn-primary">Login</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
-
-
-    <!-- Registration Modal -->
-    <div class="modal fade" id="ModalRegistration" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Registriere Dich..</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <!-- Registration Form -->
-                    <form>
-                        <div class="form-row align-items-center">
-                            <!-- Username -->
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <span class="fa fa-user"></span>
-                                    </div>
-                                </div>
-                                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
-                            </div>
-
-                            <!-- Vorname -->
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <span class="fa fa-address-book"></span>
-                                    </div>
-                                </div>
-                                <input type="text" class="form-control" id="inputFirstname" placeholder="Vorname">
-                            </div>
-
-                            <!-- Nachname -->
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <span class="fa fa-address-book"></span>
-                                    </div>
-                                </div>
-                                <input type="text" class="form-control" id="inputLastname" placeholder="Nachname">
-                            </div>
-
-                            <!-- E-Mail -->
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <span class="fa fa-envelope"></span>
-                                    </div>
-                                </div>
-                                <input type="text" class="form-control" id="inputEmail" placeholder="E-Mail Adresse">
-                            </div>
-
-                            <!-- Passwort -->
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <span class="fa fa-lock"></span>
-                                    </div>
-                                </div>
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Passwort">
-                            </div>
-                            <span id="LoginText">Noch kein Mitglied? Klicke jetzt auf den "Registrieren"-Button</span>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"">Abbrechen</button>
-                    <button type="button" class="btn btn-primary">Registrieren</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 
     <!-- Jumbotron (Title, subtitle, project button) -->
@@ -194,7 +129,8 @@
             </div>
 
                 <!-- Modal Project -->
-                <div class="modal fade" id="ModalNewProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <form>
+            <div class="modal fade" id="ModalNewProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -206,7 +142,6 @@
                         <div class="modal-body">
 
                             <!-- Projekt Form -->
-                            <form>
                                 <div class="form-row align-items-center">
                                     <!-- Projekt-Name -->
                                     <div class="input-group mb-2">
@@ -237,13 +172,27 @@
                                         </div>
                                         <textarea class="form-control" id="ProjektBeschreibung" placeholder="Beschreibung" rows="5" maxlenght="10000" required="true"></textarea>
                                     </div>
+
+                                    <!-- Kategorie -->
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">
+                                                <span class="fa fa-folder-open"></span>
+                                            </label>
+                                        </div>
+                                        <select class="custom-select" id="inputSelectCategory" required>
+                                            <option selected disabled hidden>Wähle eine Kategorie...</option>
+                                            <option value="1">First</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </form>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"">Abbrechen</button>
-                            <button type="button" class="btn btn-primary">Projekt hinzufügen</button>
+                            <button type="submit" class="btn btn-primary">Projekt hinzufügen</button>
                         </div>
+                        </form>
                     </div>
                 </div>
                 </div>
