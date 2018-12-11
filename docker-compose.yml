@@ -3,17 +3,20 @@ version: '3'
 services:
   db:
     image: mysql
+    container_name: sb_db
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ultra-safe-password
       MYSQL_DATABASE: sharebucket_db
       MYSQL_USER: sharebucket_admin
       MYSQL_PASSWORD: sharebucket_password
     ports:
       - "3306:3306"
+    volumes:
+      - ./db/:/docker-entrypoint-initdb.d
 
   web:
     build: ./php/
-    container_name: php_web
+    container_name: sb_web
     depends_on:
       - db
     volumes:
@@ -21,16 +24,7 @@ services:
     ports:
       - "8080:80"
       
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-        - 8000:80
-    depends_on: 
-      - db
-    environment:
-        MYSQL_USER: sharebucket_admin
-        MYSQL_PASSWORD: sharebucket_password
-        PMA_PORT: "3306"
-        PMA_USER: sharebucket_admin
-        PAM_PASSWORD: sharebucket_password
-        PMA_HOST: db
+#  adminer:
+#    image: adminer
+#    ports:
+#      - 8000:8000
