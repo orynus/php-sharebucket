@@ -4,101 +4,7 @@
  * Date: 04.12.2018
  */
 
-
-// Initialisierung
-$error = $message =  '';
-$username = $firstname = $lastname = $email = $password = '';
-
-/*
-// Wurden Daten mit "POST" gesendet?
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-// Ausgabe des gesamten $_POST Arrays
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
-*/
-
-
-// Benutzername vorhanden, mindestens 6 Zeichen und maximal 25 zeichen lang
-if(isset($_POST['username']) && !empty(trim($_POST['username'])) && strlen(trim($_POST['username'])) <= 25 && strlen(trim($_POST['username'])) >= 6){
-    // Spezielle Zeichen Escapen > Script Injection verhindern
-    $username = htmlspecialchars(trim($_POST['username']));
-} else {
-    // Ausgabe Fehlermeldung
-    $error .= "Gebe bitte einen korrekten Benutzernamen ein.<br />";
-}
-
-
-// Vorname vorhanden, mindestens 1 Zeichen und maximal 50 Zeichen lang
-if(isset($_POST['firstname']) && !empty(trim($_POST['firstname'])) && strlen(trim($_POST['firstname'])) <= 50){
-    // Spezielle Zeichen Escapen > Script Injection verhindern
-    $firstname = htmlspecialchars(trim($_POST['firstname']));
-} else {
-    // Ausgabe Fehlermeldung
-    $error .= "Gebe bitte einen korrekten Vornamen ein.<br />";
-}
-
-
-// Nachname vorhanden, mindestens 1 Zeichen und maximal 50 zeichen lang
-if(isset($_POST['lastname']) && !empty(trim($_POST['lastname'])) && strlen(trim($_POST['lastname'])) <= 50){
-    // Spezielle Zeichen Escapen > Script Injection verhindern
-    $lastname = htmlspecialchars(trim($_POST['lastname']));
-} else {
-    // Ausgabe Fehlermeldung
-    $error .= "Gebe bitte einen korrekten Nachnamen ein.<br />";
-}
-
-
-// Email-Adresse vorhanden, mindestens 1 Zeichen und maximal 255 zeichen lang
-if(isset($_POST['email']) && !empty(trim($_POST['email'])) && strlen(trim($_POST['email'])) <= 255){
-    $email = htmlspecialchars(trim($_POST['email']));
-    // korrekte Email-Adresse?
-    if (filter_var($email, FILTER_VALIDATE_EMAIL) === false){
-        $error .= "Geben Sie bitte eine korrekte Email-Adresse ein<br />";
-    }
-} else {
-    // Ausgabe Fehlermeldung
-    $error .= "Geben Sie bitte eine korrekte Email-Adresse ein.<br />";
-}
-
-// Passwort vorhanden, mindestens 8 Zeichen
-if(isset($_POST['password']) && !empty(trim($_POST['password']))){
-    $password = trim($_POST['password']);
-    //entspricht das passwort unseren vorgaben? (minimal 8 Zeichen, Zahlen, Buchstaben, keine Zeilenumbrüche, mindestens ein Gross- und ein Kleinbuchstabe)
-    if(!preg_match("/(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/", $password)){
-        $error .= "Das Passwort entspricht nicht dem geforderten Format.<br />";
-    }
-} else {
-    // Ausgabe Fehlermeldung
-    $error .= "Gebe bitte einen korrektes Passowort ein.<br />";
-}
-
-
-// wenn kein Fehler vorhanden ist, schreiben der Daten in die Datenbank
-if(empty($error)){
-    // INPUT Query erstellen, welches firstname, lastname, username, password, email in die Datenbank schreibt
-    $query = "INSERT INTO users (username, firstname, lastname, email, password) VALUES (?,?,?,?,?)";
-
-    // Query vorbereiten mit prepare();
-    $stmt = $mysqli->prepare($query);
-
-    // Password hashing
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-    // Parameter an Query binden mit bind_param();
-    $stmt->bind_param("sssss", $firstname, $lastname, $username, $password_hash, $email);
-
-    // Query ausführen mit execute();
-    $stmt->execute();
-
-    // Verbindung schliessen
-    $mysqli->close();
-
-    // Weiterleitung auf login.php
-    header('Location: login.php');
-}
-
-
+include "actions/register_user.php"
 
 ?>
 
@@ -181,7 +87,7 @@ if(empty($error)){
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"">Abbrechen</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Abbrechen</button>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             </div>
@@ -191,7 +97,7 @@ if(empty($error)){
 
 
     <!-- Registration Form -->
-    <form id="FrmRegistration" action="index.php">
+    <form id="FrmRegistration" method="post" action="">
     <div class="container" id="Registration">
         <h2>Registration</h2>
             <div class="form-row align-items-center">
@@ -203,7 +109,7 @@ if(empty($error)){
                             <span class="fa fa-user"></span>
                         </div>
                     </div>
-                    <input type="text" class="form-control" id="inputUsername" placeholder="Username" tabindex="1" required="true" minlength="6" maxlength="25">
+                    <input type="text" class="form-control" name="username" placeholder="Username" tabindex="1" required="true" minlength="6" maxlength="25">
                 </div>
 
                 <!-- Vorname -->
@@ -213,7 +119,7 @@ if(empty($error)){
                             <span class="fa fa-address-book"></span>
                         </div>
                     </div>
-                    <input type="text" class="form-control" id="inputFirstname" placeholder="Vorname" tabindex="2"  required="true" maxlength="50">
+                    <input type="text" class="form-control" name="firstname" placeholder="Vorname" tabindex="2"  required="true" maxlength="50">
                 </div>
 
                 <!-- Nachname -->
@@ -223,7 +129,7 @@ if(empty($error)){
                             <span class="fa fa-address-book"></span>
                         </div>
                     </div>
-                    <input type="text" class="form-control" id="inputLastname" placeholder="Nachname" tabindex="3" required="true" maxlength="50">
+                    <input type="text" class="form-control" name="lastname" placeholder="Nachname" tabindex="3" required="true" maxlength="50">
                 </div>
 
                 <!-- E-Mail -->
@@ -233,7 +139,7 @@ if(empty($error)){
                             <span class="fa fa-envelope"></span>
                         </div>
                     </div>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="E-Mail Adresse" tabindex="4" required="true" maxlength="255">
+                    <input type="email" class="form-control" name="email" placeholder="E-Mail Adresse" tabindex="4" required="true" maxlength="255">
                 </div>
 
                 <!-- Passwort -->
@@ -243,7 +149,7 @@ if(empty($error)){
                             <span class="fa fa-lock"></span>
                         </div>
                     </div>
-                    <input type="password" class="form-control" id="inputPassword"
+                    <input type="password" class="form-control" name="password"
                            placeholder="Passwort (Gross- und Kleinbuchstaben, Zahlen, Sonderzeichen, min. 8 Zeichen, keine Umlaute)" tabindex="5"
                            required="true" pattern="(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                            maxlength="255">

@@ -102,7 +102,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"">Abbrechen</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Abbrechen</button>
                     <a href="registration.php"><button type="button" class="btn btn-secondary">Registrieren</button></a>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
@@ -189,7 +189,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"">Abbrechen</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Abbrechen</button>
                             <button type="submit" class="btn btn-primary">Projekt hinzufügen</button>
                         </div>
                         </form>

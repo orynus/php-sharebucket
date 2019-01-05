@@ -24,7 +24,7 @@ services:
     ports:
       - "8080:80"
       
-#  adminer:
-#    image: adminer
-#    ports:
-#      - 8000:8000
+  adminer:
+    image: adminer
+    ports:
+      - 8000:8080
