@@ -31,6 +31,7 @@
                                 </div>
                                 <input type="password" class="form-control" id="inputpassword" placeholder="Passwort" required="true">
                             </div>
+                            <span id="LoginText">Noch kein Mitglied? Klicke jetzt auf den "Registrieren"-Button</span>
                         </div>
                 </div>
                 <div class="modal-footer">

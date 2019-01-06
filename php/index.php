@@ -7,8 +7,6 @@
 include "actions/create_project.php"
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -37,7 +35,10 @@ include "actions/create_project.php"
 </head>
 <body>
 
-    <?php 
+    <?php
+        include "actions/get_categorys.php";
+        include "actions/get_projects.php";
+
         include "templates/navbar.php"; 
         include "templates/login-modal.php";
         include "templates/project-modal.php";
@@ -50,7 +51,6 @@ include "actions/create_project.php"
             <p class="lead">
                 Hast du keine Idee für Dein nächstes Software-Projekt?<br>
                 Sharebucket ist eine Webseite, die es Dir ermöglicht, Dich von Projektideen andere inspirieren zu lassen und eigene Ideen mit anderen zu teilen.. </p>
-
             <hr>
 
             <!-- Projekt hinzufügen -->
@@ -60,7 +60,27 @@ include "actions/create_project.php"
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="card-columns">
+            <?php
+            foreach($projects AS $project) {
+                $title = $project['title'];
+                $short_description = $project['short_description'];
+                $topic = "No Topic";
+                $color = "#FFFFFF";
 
+                foreach($categorys AS $category) {
+                    if($category['idCategory'] == $project['idCategory']) {
+                        $color = $category['color'];
+                        $topic = $category['topic'];
+                    }
+                }
+
+                include "templates/project-card.php";
+            }
+            ?>
+        </div>
+    </div>
 </body>
 </html>
 

@@ -52,7 +52,11 @@
                                 </div>
                                 <select class="custom-select" name="idCategory" required>
                                     <option selected disabled hidden>Wähle eine Kategorie...</option>
-                                    <option value="1">First</option>
+                                    <?php
+                                    foreach($categorys AS $category) {
+                                        echo "<option value='" . $category['idCategory'] . "'>" . $category['topic'] . "</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
