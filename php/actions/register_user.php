@@ -61,11 +61,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $error .= "Gebe bitte einen korrektes Passowort ein.<br />";
     }
 
+    // Datenbank Verbindung importieren
+    include "connectors/db-frontend.inc.php";
+
+    // Prüfen ob Username schon existiert
+    $query = "SELECT * FROM User";
+    $result = $mysqli->query($query);
+    while($row = $result->fetch_assoc()) {
+        if($row['username'] == $username) {
+            $error .= "Es existiert bereits ein Benutzer mit diesem Username.<br />";
+        }
+    }
 
     // wenn kein Fehler vorhanden ist, schreiben der Daten in die Datenbank
     if(empty($error)){
-        // Datenbank Verbindung importieren
-        include "connectors/db-frontend.inc.php";
+        
 
         // Abfrage ob bereits Benutzer bestehen
         $query = "SELECT * FROM User";

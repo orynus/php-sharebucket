@@ -20,7 +20,7 @@
     <!-- Login-Button -->
     <?php if($_SESSION['loggedIn']) { ?>
         <div class="user" align="right" data-toggle="modal" data-target="#ModalUserData">
-            <span class="right"><?php echo "Hello, " . $_SESSION['user']['username'];?></span>
+            <span class="right"><?php echo "Hallo, " . $_SESSION['user']['username'];?></span>
             <img src="img/sb_user.png" align="right" sizes="32x32" />
         </div>
     <?php } else { ?>

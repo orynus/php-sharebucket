@@ -77,5 +77,5 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 INSERT INTO Category ( topic, color) VALUES ( "Webentwicklung", "#007BFF");
 INSERT INTO Category ( topic, color) VALUES ( "Machine Learning", "#A000FF");
-INSERT INTO Category ( topic, color) VALUES ( "Kryptographie", "#BA0500");
+INSERT INTO Category ( topic, color) VALUES ( "Kryptographie", "#FF2019");
 INSERT INTO Category ( topic, color) VALUES ( "Sonstiges", "#FF5600");

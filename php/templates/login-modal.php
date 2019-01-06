@@ -37,7 +37,6 @@
                 <input type="hidden" name="login">
                 <div class="modal-footer">
                     <a href="registration.php"><button type="button" class="btn btn-secondary">Registrieren</button></a>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Abbrechen</button>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             </div>
