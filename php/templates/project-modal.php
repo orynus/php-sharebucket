@@ -1,5 +1,5 @@
 <!-- Modal Project -->
-<form>
+<form method="post" action="">
     <div class="modal fade" id="ModalNewProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -20,7 +20,7 @@
                                         <span class="fa fa-briefcase"></span>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control" id="ProjektName" placeholder="Projekt Name" maxlength="50" required="true">
+                                <input type="text" class="form-control" name="title" placeholder="Projekt Name" maxlength="50" required="true">
                             </div>
 
                             <!-- Kurzbeschreibung -->
@@ -30,7 +30,7 @@
                                         <span class="fa fa-pencil"></span>
                                     </div>
                                 </div>
-                                <textarea class="form-control" id="ProjektKurzbeschreibung" placeholder="Kurzbeschreibung" rows="3" maxlenght="100" required="true"></textarea>
+                                <textarea class="form-control" name="short_description" placeholder="Kurzbeschreibung" rows="3" maxlenght="100" required="true"></textarea>
                             </div>
 
                             <!-- Beschreibung -->
@@ -40,7 +40,7 @@
                                         <span class="fa fa-pencil"></span>
                                     </div>
                                 </div>
-                                <textarea class="form-control" id="ProjektBeschreibung" placeholder="Beschreibung" rows="5" maxlenght="10000" required="true"></textarea>
+                                <textarea class="form-control" name="description" placeholder="Beschreibung" rows="5" maxlenght="10000" required="true"></textarea>
                             </div>
 
                             <!-- Kategorie -->
@@ -50,12 +50,15 @@
                                         <span class="fa fa-folder-open"></span>
                                     </label>
                                 </div>
-                                <select class="custom-select" id="inputSelectCategory" required>
+                                <select class="custom-select" name="idCategory" required>
                                     <option selected disabled hidden>Wähle eine Kategorie...</option>
                                     <option value="1">First</option>
                                 </select>
                             </div>
                         </div>
+
+                        <!-- Kennzeichnung der Project Form -->
+                        <input type="hidden" name="project">
 
                 </div>
                 <div class="modal-footer">
