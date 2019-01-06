@@ -3,7 +3,7 @@
  * Author: Noah Grun
  * Date: 04.12.2018
  */
-
+session_start();
 include "actions/register_user.php"
 
 ?>

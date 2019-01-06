@@ -1,5 +1,5 @@
-<!-- User Modal -->
-<form id="LoginForm">
+<!-- Login Modal -->
+<form id="LoginForm" method="post" action="">
     <div class="modal fade" id="ModalUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -19,7 +19,7 @@
                                         <span class="fa fa-user"></span>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control" id="inputusername" placeholder="Username" required="true">
+                                <input type="text" class="form-control" name="username" placeholder="Username" required="true">
                             </div>
 
                             <!-- Passwort -->
@@ -29,11 +29,12 @@
                                         <span class="fa fa-lock"></span>
                                     </div>
                                 </div>
-                                <input type="password" class="form-control" id="inputpassword" placeholder="Passwort" required="true">
+                                <input type="password" class="form-control" name="password" placeholder="Passwort" required="true">
                             </div>
                             <span id="LoginText">Noch kein Mitglied? Klicke jetzt auf den "Registrieren"-Button</span>
                         </div>
                 </div>
+                <input type="hidden" name="login">
                 <div class="modal-footer">
                     <a href="registration.php"><button type="button" class="btn btn-secondary">Registrieren</button></a>
                     <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Abbrechen</button>

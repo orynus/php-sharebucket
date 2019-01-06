@@ -1,11 +1,11 @@
 <?php
-// Initialisierung
-$error = $message =  '';
-$username = $firstname = $lastname = $email = $password = '';
-
 
 // Wurden Daten mit "POST" gesendet?
 if($_SERVER['REQUEST_METHOD'] == "POST"){
+
+    // Initialisierung
+    $error = $message =  '';
+    $username = $firstname = $lastname = $email = $password = '';
 
     // Benutzername vorhanden, mindestens 6 Zeichen und maximal 25 zeichen lang
     if(isset($_POST['username']) && !empty(trim($_POST['username'])) && strlen(trim($_POST['username'])) <= 25 && strlen(trim($_POST['username'])) >= 6){

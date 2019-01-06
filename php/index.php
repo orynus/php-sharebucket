@@ -3,8 +3,10 @@
  * Author: Noah Grun
  * Date: 04.12.2018
  */
-
-include "actions/create_project.php"
+session_start();
+include "actions/create_project.php";
+include "actions/login_user.php";
+include "actions/logout_user.php";
 
 ?>
 <!DOCTYPE html>
@@ -42,6 +44,7 @@ include "actions/create_project.php"
         include "templates/navbar.php"; 
         include "templates/login-modal.php";
         include "templates/project-modal.php";
+        include "templates/user-modal.php";
     ?>
 
     <!-- Jumbotron (Title, subtitle, project button) -->
