@@ -41,6 +41,7 @@ include "actions/logout_user.php";
         include "actions/get_categorys.php";
         include "actions/get_projects.php";
 
+        $navbar_title = "Projektübersicht";
         include "templates/navbar.php"; 
         include "templates/login-modal.php";
         include "templates/project-modal.php";

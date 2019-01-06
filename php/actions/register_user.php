@@ -67,8 +67,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         // Datenbank Verbindung importieren
         include "connectors/db-frontend.inc.php";
 
+        // Abfrage ob bereits Benutzer bestehen
+        $query = "SELECT * FROM User";
+        $result = $mysqli->query($query);
+        if ($result->num_rows > 0) {
+            $isAdmin = 0;
+        } else {
+            $isAdmin = 1;
+        }
+
         // INPUT Query erstellen, welches firstname, lastname, username, password, email in die Datenbank schreibt
-        $query = "INSERT INTO User (username, firstname, lastname, email, password) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO User (username, firstname, lastname, email, password, isAdmin) VALUES (?,?,?,?,?,?)";
 
         // Query vorbereiten mit prepare();
         $stmt = $mysqli->prepare($query);
@@ -77,7 +86,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
         // Parameter an Query binden mit bind_param();
-        $stmt->bind_param("sssss", $username, $firstname, $lastname, $email, $password_hash);
+        $stmt->bind_param("sssssi", $username, $firstname, $lastname, $email, $password_hash, $isAdmin);
 
         // Query ausführen mit execute();
         $stmt->execute();

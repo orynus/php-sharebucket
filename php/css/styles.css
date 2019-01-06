@@ -18,6 +18,10 @@ body {
 	cursor: pointer;
 }
 
+.navbar-title span {
+	font-size: 2em;
+}
+
 .jumbotron {
 	padding: 1.2em 0.8em;
 }
@@ -40,4 +44,12 @@ body {
 	color: #4D5359;
 	font-size: 14px;
 	font-style: italic;
+}
+
+#adminbereich {
+	margin-top: 25px;
+}
+
+#neueKategorie {
+	margin-top: 10px;
 }

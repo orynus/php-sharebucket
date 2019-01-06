@@ -15,6 +15,9 @@
                 </div>
                 <input type="hidden" name="logout">
                 <div class="modal-footer">
+                    <?php if($_SESSION['loggedIn'] && $_SESSION['user']['isAdmin']) { ?>
+                    <a href="administration.php"><button type="button" class="btn btn-primary">Adminbereich</button></a>
+                    <?php } ?>
                     <button type="button" class="btn btn-info" data-dismiss="modal" aria-label="Close">Abbrechen</button>
                     <button type="submit" class="btn btn-danger">Logout</button>
                 </div>
