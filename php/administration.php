@@ -11,6 +11,7 @@ if(!$_SESSION['user']['isAdmin']) {
 
 include "actions/logout_user.php";
 include "actions/add_category.php";
+include "actions/delete_project.php";
 
 ?>
 <!DOCTYPE html>
@@ -43,17 +44,96 @@ include "actions/add_category.php";
     <?php
         include "actions/get_users.php";
         include "actions/get_categorys.php";
+        include "actions/get_projects.php";
 
         $navbar_title = "Adminbereich";
         include "templates/navbar.php";
         include "templates/user-modal.php";
     ?>
     <div class="container-fluid" id="adminbereich">
-        <div class="">
+    <div class="row">
+        <div class="col-md-8 col-lg-10">
+            <div class="row">
+                <div class="col-md-8 col-lg-8">
+                    <h3>Projekte</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Titel</th>
+                            <th scope="col">Kategorie</th>
+                            <th scope="col">Benutzer</th>
+                            <th scope="col">Auswählen</th>
+                            <th scope="col">Löschen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach($projects AS $project) {
+                                // Projektattribute
+                                $id = $project['idProject'];
+                                $title = $project['title'];
+                                foreach($users AS $user) {
+                                    if($user['idUser'] == $project['idUser']) {
+                                        $project_user = $user['username'];
+                                    }
+                                }
+                                foreach($categorys AS $category) {
+                                    if($category['idCategory'] == $project['idCategory']) {
+                                        $project_category = $category['topic'];
+                                        $category_color = $category['color'];
+                                    }
+                                }?>
+                                <tr>
+                                    <td><?php echo $id ?></td>
+                                    <td><?php echo $title ?></td>
+                                    <td><span style="color: <?php echo $category_color ?>;"><?php echo $project_category ?><span></td>
+                                    <td><?php echo $project_user ?></td>
+                                    <td>
+                                        <form action="" method="get">
+                                            <input type="hidden" name="id" value=<?php echo $id?>>
+                                            <button class="btn btn-info" type="submit">Auswählen</button>
+                                        </form>
+                                    </td>    
+                                    <td>
+                                        <form action="" method="post">
+                                            <input type="hidden" name="delete_project" value=<?php echo $id?>>
+                                            <button class="btn btn-danger" type="submit">Löschen</button>
+                                        </form>
+                                    <td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <?php
+                    // Wenn eine Projekt id vorhanden ist und kein Projekt gelöscht wurde
+                    if(isset($_GET['id']) && !isset($_POST['delete_project'])){
+                        foreach($projects AS $project){
+                            if($project['idProject'] == $_GET['id']) {
+                                // Attribute setzen
+                                $title = $project['title'];
+                                $short_description = $project['short_description'];
+                                $description = $project['description'];
+                            }
+                        }
+
+                        // Template um Details darzustellen
+                        include "templates/project-detail.php";
+                    }
+                    
+                    ?>
+                </div>
+            </div>
         </div>
         <div class="col-md-4 col-lg-2">
+            <h3>Kategorien</h3>
             <ul class="list-group">
-                <?php 
+                <?php
+                // Alle Kategorien auflisten mit Farbe
                 foreach($categorys as $category) {
                     echo "<li class='list-group-item' style='background-color: " . $category['color'] . ";'>" . $category['topic'] . "</li>";
                 }
@@ -74,6 +154,7 @@ include "actions/add_category.php";
                 </div>   
             </form>
         </div>
+    </div>
     </div>
 </body>
 </html>

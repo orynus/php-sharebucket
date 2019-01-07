@@ -66,10 +66,16 @@ include "actions/change_password.php";
             <hr>
 
             <!-- Projekt hinzufügen -->
+            <?php
+            if($_SESSION['loggedIn']) {
+            ?>
             <div class="addProject" >
                 <p><span>Füge jetzt deine Projektidee hinzu..</span></p>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalNewProject">Neues Projekt</button>
             </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
     <div class="container">
