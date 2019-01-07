@@ -25,6 +25,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['delete_project'])){
     // Verbindung schliessen
     $mysqli->close();
 
-    $message .= "Das Project wurde erfolgreich gelöscht.<br />";
+    $message .= "Das Projekt wurde erfolgreich gelöscht.<br />";
 }
 ?>

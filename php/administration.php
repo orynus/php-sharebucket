@@ -108,7 +108,7 @@ include "actions/delete_project.php";
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-4 col-lg-4">
+                <div class=" col-md-12 col-lg-4">
                     <?php
                     // Wenn eine Projekt id vorhanden ist und kein Projekt gelöscht wurde
                     if(isset($_GET['id']) && !isset($_POST['delete_project'])){
