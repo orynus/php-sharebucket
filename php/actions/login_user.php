@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['login'])){
                 $message .= "Du bist nun eingeloggt";
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['user'] = $user;
-                session_regenerate_id();
+                session_regenerate_id(); // Verhindert Session-Hijacking
 
             } else {
                 $error .= "Das Passwort ist falsch";
