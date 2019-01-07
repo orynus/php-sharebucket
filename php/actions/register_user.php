@@ -95,7 +95,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         // Password hashing
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Parameter an Query binden mit bind_param(); 
+        // Parameter an Query binden mit bind_param();
         $stmt->bind_param("sssssi", $username, $firstname, $lastname, $email, $password_hash, $isAdmin);
 
         // Query ausführen mit execute();

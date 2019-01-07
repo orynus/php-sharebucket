@@ -11,6 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['logout'])){
 
 
     $_SESSION = array();
+    session_destroy();
     $message .= 'Du wurdest erfolgreich ausgeloggt!';
 }
 ?>
