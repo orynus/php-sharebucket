@@ -41,10 +41,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['login'])){
                 session_regenerate_id(); // Verhindert Session-Hijacking
 
             } else {
-                $error .= "Das Passwort ist falsch";
+                $error .= "Die Benutzerdaten stimmen nicht überein.<br />";
             }
         } else {
-            $error .= "Es existiert kein Benutzer mit diesem Username.<br />";
+            $error .= "Die Benutzerdaten stimmen nicht überein.<br />";
         }
 
         // Verbindung schliessen
