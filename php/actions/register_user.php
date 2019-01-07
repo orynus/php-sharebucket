@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     // Benutzername vorhanden, mindestens 6 Zeichen und maximal 25 zeichen lang
     if(isset($_POST['username']) && !empty(trim($_POST['username'])) && strlen(trim($_POST['username'])) <= 25 && strlen(trim($_POST['username'])) >= 6){
         // Spezielle Zeichen Escapen > Script Injection verhindern
-        $username = htmlspecialchars(trim($_POST['username']));
+        $username = htmlspecialchars(trim($_POST['username'])); // Script-Injection vermeiden
     } else {
         // Ausgabe Fehlermeldung
         $error .= "Gebe bitte einen korrekten Benutzernamen ein.<br />";
@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     // Vorname vorhanden, mindestens 1 Zeichen und maximal 50 Zeichen lang
     if(isset($_POST['firstname']) && !empty(trim($_POST['firstname'])) && strlen(trim($_POST['firstname'])) <= 50){
         // Spezielle Zeichen Escapen > Script Injection verhindern
-        $firstname = htmlspecialchars(trim($_POST['firstname']));
+        $firstname = htmlspecialchars(trim($_POST['firstname'])); // Script-Injection vermeiden
     } else {
         // Ausgabe Fehlermeldung
         $error .= "Gebe bitte einen korrekten Vornamen ein.<br />";
@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     // Nachname vorhanden, mindestens 1 Zeichen und maximal 50 zeichen lang
     if(isset($_POST['lastname']) && !empty(trim($_POST['lastname'])) && strlen(trim($_POST['lastname'])) <= 50){
         // Spezielle Zeichen Escapen > Script Injection verhindern
-        $lastname = htmlspecialchars(trim($_POST['lastname']));
+        $lastname = htmlspecialchars(trim($_POST['lastname'])); // Script-Injection vermeiden
     } else {
         // Ausgabe Fehlermeldung
         $error .= "Gebe bitte einen korrekten Nachnamen ein.<br />";
@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     // Email-Adresse vorhanden, mindestens 1 Zeichen und maximal 255 zeichen lang
     if(isset($_POST['email']) && !empty(trim($_POST['email'])) && strlen(trim($_POST['email'])) <= 255){
-        $email = htmlspecialchars(trim($_POST['email']));
+        $email = htmlspecialchars(trim($_POST['email'])); // Script-Injection vermeiden
         // korrekte Email-Adresse?
         if (filter_var($email, FILTER_VALIDATE_EMAIL) === false){
             $error .= "Geben Sie bitte eine korrekte Email-Adresse ein<br />";
@@ -95,7 +95,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         // Password hashing
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Parameter an Query binden mit bind_param();
+        // Parameter an Query binden mit bind_param(); 
         $stmt->bind_param("sssssi", $username, $firstname, $lastname, $email, $password_hash, $isAdmin);
 
         // Query ausführen mit execute();
@@ -107,5 +107,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         // Weiterleitung auf login.php
         header('Location: index.php');
     }
+
+
 }
 ?>

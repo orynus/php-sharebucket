@@ -1,9 +1,13 @@
 <?php
 /**
- * Author: Noah Grun
+ * Author: Noah Grun, Linus Degen
  * Date: 04.12.2018
  */
+
+// Session starten
 session_start();
+
+// Actions einbinden
 include "actions/create_project.php";
 include "actions/login_user.php";
 include "actions/logout_user.php";
@@ -39,10 +43,12 @@ include "actions/change_password.php";
 <body>
 
     <?php
+        // Actions einbinden
         include "actions/get_categorys.php";
         include "actions/get_projects.php";
         include "actions/get_users.php";
 
+        // Templates einbinden
         $navbar_title = "Projektübersicht";
         include "templates/navbar.php"; 
         include "templates/login-modal.php";
