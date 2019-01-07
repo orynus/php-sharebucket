@@ -10,12 +10,12 @@ Build the containers in the project folder:
 
 `docker-compose build`
 
-# Start
+## Start
 Start the docker-compose containers in the project folder:
 
 `docker-compose up -d`
 
-# Stop
+## Stop
 Stop the docker-compose containers in the project folder:
 
 `docker-compose stop`
