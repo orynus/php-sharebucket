@@ -30,7 +30,7 @@
                                         <span class="fa fa-pencil"></span>
                                     </div>
                                 </div>
-                                <textarea class="form-control" name="short_description" placeholder="Kurzbeschreibung" rows="3" maxlenght="100" required="true"></textarea>
+                                <textarea class="form-control" name="short_description" placeholder="Kurzbeschreibung" rows="3" maxlength="100" required="true"></textarea>
                             </div>
 
                             <!-- Beschreibung -->
@@ -40,7 +40,7 @@
                                         <span class="fa fa-pencil"></span>
                                     </div>
                                 </div>
-                                <textarea class="form-control" name="description" placeholder="Beschreibung" rows="5" maxlenght="10000" required="true"></textarea>
+                                <textarea class="form-control" name="description" placeholder="Beschreibung" rows="5" maxlength="10000" required="true"></textarea>
                             </div>
 
                             <!-- Kategorie -->

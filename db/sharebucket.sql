@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `sharebucket_db`.`User` (
   `lastname` VARCHAR(50) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
+  `isAdmin` TINYINT(1) NOT NULL,
   PRIMARY KEY (`idUser`))
 ENGINE = InnoDB;
 
@@ -73,3 +74,8 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO Category ( topic, color) VALUES ( "Webentwicklung", "#007BFF");
+INSERT INTO Category ( topic, color) VALUES ( "Machine Learning", "#A000FF");
+INSERT INTO Category ( topic, color) VALUES ( "Kryptographie", "#FF2019");
+INSERT INTO Category ( topic, color) VALUES ( "Sonstiges", "#FF5600");

@@ -4,7 +4,9 @@
  * Date: 04.12.2018
  */
 session_start();
-include "actions/register_user.php"
+include "actions/register_user.php";
+include "actions/login_user.php";
+include "actions/logout_user.php";
 
 ?>
 
@@ -36,9 +38,11 @@ include "actions/register_user.php"
 </head>
 <body>
 
-    <?php 
+    <?php
+        $navbar_title = "Registrierung";
         include "templates/navbar.php"; 
         include "templates/login-modal.php";
+        include "templates/user-modal.php";
     ?>
 
     <!-- Registration Form -->

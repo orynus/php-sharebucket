@@ -8,6 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['project'])){
     $title = $short_description = $description = '';
 
     if($_SESSION['loggedIn']) {
+
         // Titel vorhanden und maximal 50 Zeichen lang
         if(isset($_POST['title']) && !empty(trim($_POST['title'])) && strlen(trim($_POST['title'])) <= 50){
             // Spezielle Zeichen Escapen > Script Injection verhindern
@@ -37,6 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['project'])){
 
         // wenn kein Fehler vorhanden ist, schreiben der Daten in die Datenbank
         if(empty($error)){
+
             // Datenbank Verbindung importieren
             include "connectors/db-frontend.inc.php";
 
@@ -46,16 +48,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['project'])){
             // Query vorbereiten mit prepare();
             $stmt = $mysqli->prepare($query);
 
-            // Password hashing
-            $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-            // TODO Id des aktuellen Users
-            $idUser = 1;
+            // Id des aktuellen Users
+            $idUser = $_SESSION['user']['idUser'];
 
             // Ausgewählte Category
             $idCategory = $_POST['idCategory'];
 
-            // TODO Sichtbarkeit des Projekts
+            // Sichtbarkeit des Projekts
             $public = 1;
 
             // Timestamp der Erstellung
@@ -69,6 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['project'])){
 
             // Verbindung schliessen
             $mysqli->close();
+
         }
     } else {
         $error .= "Nur eingeloggte User können Projekte erstellen.<br />";

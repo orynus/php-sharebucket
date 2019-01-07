@@ -7,6 +7,7 @@ session_start();
 include "actions/create_project.php";
 include "actions/login_user.php";
 include "actions/logout_user.php";
+include "actions/change_password.php";
 
 ?>
 <!DOCTYPE html>
@@ -40,7 +41,9 @@ include "actions/logout_user.php";
     <?php
         include "actions/get_categorys.php";
         include "actions/get_projects.php";
+        include "actions/get_users.php";
 
+        $navbar_title = "Projektübersicht";
         include "templates/navbar.php"; 
         include "templates/login-modal.php";
         include "templates/project-modal.php";
@@ -69,8 +72,16 @@ include "actions/logout_user.php";
             foreach($projects AS $project) {
                 $title = $project['title'];
                 $short_description = $project['short_description'];
+                $description = $project['description'];
+                $name = "Anonymous";
                 $topic = "No Topic";
                 $color = "#FFFFFF";
+
+                foreach($users AS $user) {
+                    if($user['idUser'] == $project['idUser']) {
+                        $name = $user['firstname'] . " " . $user['lastname'];
+                    }
+                }
 
                 foreach($categorys AS $category) {
                     if($category['idCategory'] == $project['idCategory']) {

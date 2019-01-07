@@ -13,6 +13,10 @@
         <span>Sharebucket</span>
     </a>
 
+    <div class="navbar-title">
+        <span><?php echo $navbar_title; ?></span>
+    </div>
+
     <!-- Login-Button -->
     <?php if($_SESSION['loggedIn']) { ?>
         <div class="user" align="right" data-toggle="modal" data-target="#ModalUserData">
