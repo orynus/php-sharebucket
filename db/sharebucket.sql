@@ -75,6 +75,10 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+CREATE USER 'sharebucket_admin'@'%' IDENTIFIED BY 'sharebucket_password';
+GRANT SELECT, UPDATE, INSERT, DELETE ON sharebucket_db.* TO sharebucket_admin@'%';
+FLUSH PRIVILEGES;
+
 INSERT INTO Category ( topic, color) VALUES ( "Webentwicklung", "#007BFF");
 INSERT INTO Category ( topic, color) VALUES ( "Machine Learning", "#A000FF");
 INSERT INTO Category ( topic, color) VALUES ( "Kryptographie", "#FF2019");

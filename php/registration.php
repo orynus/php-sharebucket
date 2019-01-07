@@ -7,6 +7,7 @@ session_start();
 include "actions/register_user.php";
 include "actions/login_user.php";
 include "actions/logout_user.php";
+include "actions/change_password.php";
 
 ?>
 

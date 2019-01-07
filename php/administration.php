@@ -12,6 +12,7 @@ if(!$_SESSION['user']['isAdmin']) {
 include "actions/logout_user.php";
 include "actions/add_category.php";
 include "actions/delete_project.php";
+include "actions/change_password.php";
 
 ?>
 <!DOCTYPE html>
