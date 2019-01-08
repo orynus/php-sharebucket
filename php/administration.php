@@ -88,16 +88,16 @@ include "actions/change_password.php";
                                 <tr>
                                     <td><?php echo $id ?></td>
                                     <td><?php echo $title ?></td>
-                                    <td><span style="color: <?php echo $category_color ?>;"><?php echo $project_category ?><span></td>
+                                    <td><span style="color: <?php echo $category_color ?>;"><?php echo $project_category ?></span></td>
                                     <td><?php echo $project_user ?></td>
                                     <td>
-                                        <form action="" method="get">
+                                        <form method="get">
                                             <input type="hidden" name="id" value=<?php echo $id?>>
                                             <button class="btn btn-info" type="submit">Auswählen</button>
                                         </form>
                                     </td>    
                                     <td>
-                                        <form action="" method="post">
+                                        <form method="post">
                                             <input type="hidden" name="delete_project" value=<?php echo $id?>>
                                             <button class="btn btn-danger" type="submit">Löschen</button>
                                         </form>
@@ -140,7 +140,7 @@ include "actions/change_password.php";
                 }
                 ?>
             </ul>
-            <form id="neueKategorie" method="post" action="">
+            <form id="neueKategorie" method="post">
                 <h6>Neue Kategorie</h6>
                 <div class="form-row">
                     <div class="col-6">

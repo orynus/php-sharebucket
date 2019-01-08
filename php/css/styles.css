@@ -53,3 +53,7 @@ body {
 #neueKategorie {
 	margin-top: 10px;
 }
+
+#RegistrationFormButtons {
+	text-align: right;
+}

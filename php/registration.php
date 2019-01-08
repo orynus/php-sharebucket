@@ -47,8 +47,8 @@ include "actions/change_password.php";
     ?>
 
     <!-- Registration Form -->
-    <form id="FrmRegistration" method="post" action="">
     <div class="container" id="Registration">
+    <form id="FrmRegistration" method="post">
         <h2>Registration</h2>
             <div class="form-row align-items-center">
 
@@ -59,7 +59,7 @@ include "actions/change_password.php";
                             <span class="fa fa-user"></span>
                         </div>
                     </div>
-                    <input type="text" class="form-control" name="username" placeholder="Username" tabindex="1" required="true" minlength="2" maxlength="25">
+                    <input type="text" class="form-control" name="username" placeholder="Username" tabindex="1" required minlength="2" maxlength="25">
                 </div>
 
                 <!-- Vorname -->
@@ -69,7 +69,7 @@ include "actions/change_password.php";
                             <span class="fa fa-address-book"></span>
                         </div>
                     </div>
-                    <input type="text" class="form-control" name="firstname" placeholder="Vorname" tabindex="2"  required="true" maxlength="50">
+                    <input type="text" class="form-control" name="firstname" placeholder="Vorname" tabindex="2"  required maxlength="50">
                 </div>
 
                 <!-- Nachname -->
@@ -79,7 +79,7 @@ include "actions/change_password.php";
                             <span class="fa fa-address-book"></span>
                         </div>
                     </div>
-                    <input type="text" class="form-control" name="lastname" placeholder="Nachname" tabindex="3" required="true" maxlength="50">
+                    <input type="text" class="form-control" name="lastname" placeholder="Nachname" tabindex="3" required maxlength="50">
                 </div>
 
                 <!-- E-Mail -->
@@ -89,7 +89,7 @@ include "actions/change_password.php";
                             <span class="fa fa-envelope"></span>
                         </div>
                     </div>
-                    <input type="email" class="form-control" name="email" placeholder="E-Mail Adresse" tabindex="4" required="true" maxlength="255">
+                    <input type="email" class="form-control" name="email" placeholder="E-Mail Adresse" tabindex="4" required maxlength="255">
                 </div>
 
                 <!-- Passwort -->
@@ -101,12 +101,12 @@ include "actions/change_password.php";
                     </div>
                     <input type="password" class="form-control" name="password"
                            placeholder="Passwort (Gross- und Kleinbuchstaben, Zahlen, Sonderzeichen, min. 8 Zeichen, keine Umlaute)" tabindex="5"
-                           required="true" pattern="(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                           required pattern="(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                            maxlength="255">
                 </div>
                 <span id="PasswortFormatHinweis">Passwort-Format: Gross- & Kleinbuchstaben, Zahlen, Sonderzeichen, min. 8 Zeichen, keine Umlaute</span>
             </div>
-        <div class="buttons" align="right">
+        <div class="buttons" id="RegistrationFormButtons">
             <a href="index.php"><button type="button" class="btn btn-danger" tabindex="7">Abbrechen</button></a>
             <button type="submit" class="btn btn-primary" tabindex="6">Registrieren</button>
         </div>
